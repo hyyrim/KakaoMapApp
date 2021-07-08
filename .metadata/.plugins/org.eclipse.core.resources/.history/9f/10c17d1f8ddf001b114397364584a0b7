@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest016.html</title>
+
+
+<!-- 발급받은 App Key -->
+<!-- appkey=cf7db3432a6cbc93b60056a3c4b498b8 -->
+<!-- 지도의 중심 좌표 -->
+<!-- 37.556461, 126.919521 -->
+
+<!-- 길 건너 스타벅스 -->
+<!-- 37.5568452499338, 126.91997080036919  -->
+
+
+
+<script type="text/javascript" 
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf7db3432a6cbc93b60056a3c4b498b8"></script>
+
+
+<script type="text/javascript">
+	
+	function initialize()
+	{
+		container = document.getElementById("map");
+		mapCenter = new kakao.maps.LatLng(37.556461, 126.919521);
+		options = 
+		{
+			center: mapCenter
+			, level: 3
+		}
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// 마커 옵션 구성
+		markerCenter = new kakao.maps.LatLng(37.5568452499338, 126.91997080036919);
+		
+		// 마커 생성
+		marker = new kakao.maps.Marker(
+		{
+			position: markerCenter
+		});
+		
+		// 마커가 지도에 표시될 수 있도록 설정
+		marker.setMap(map);
+		
+		// check~!!!
+		// 인포 윈도우 옵션 구성
+		var iwContent = "<div style='padding:5px;'>";
+		iwContent += "스타벅스 <br>";
+		iwContent += "<a>큰지도보기</a>"
+		iwContent += "</div>";
+		
+		
+	}
+	
+</script>
+
+</head>
+<body onload="initialize()">
+
+<div>
+	<h1>Kakao Map 인포 윈도우 구성</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 div 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+
+
+
+</body>
+</html>

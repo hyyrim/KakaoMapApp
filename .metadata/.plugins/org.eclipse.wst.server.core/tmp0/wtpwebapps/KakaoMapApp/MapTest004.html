@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest004.html</title>
+
+
+<script type="text/javascript" 
+src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf7db3432a6cbc93b60056a3c4b498b8"></script>
+
+<script type="text/javascript">
+   
+   function initialize()
+   {
+      container = document.getElementById("map");                  //-- 지도를 표시할 div
+      options = 
+      {
+          center: new kakao.maps.LatLng(37.556583, 126.919521)      //-- 지도의 중심 좌표
+         ,level : 3                                       //-- 지도의 확대 레벨(cf, zoom)
+            
+      }
+      
+      // 지도를 그릴 대상 div 와 옵션을 넘겨주며 지도 생성
+      map = new kakao.maps.Map(container,options);
+   }
+   
+   function setCenter()
+   {
+      // 중심을 이동할 위도 경도 위치 생성(라인 프랜즈)
+      var moveLatLng = new kakao.maps.LatLng(37.55573154443338, 126.9214819655879);
+      
+      // 지도 중심 이동
+      map.setCenter(moveLatLng);
+   }
+   
+   function panTo()
+   {
+
+      // 중심을 이동할 위도 경도 위치 생성(홍대 입구역, 2번출구 스타벅스)
+      var moveLatLng = new kakao.maps.LatLng(37.557180503874925, 126.92359877439573);
+      
+      // 지도 중심 이동
+      //-- 이동 과정에서 이동할 거리가 지도에서 표현되는 범위 밖에 있다면
+      //   즉, 이동 거리가 지도 화면보다 크다면
+      //   부드러운 효과 없이 이동하게 된다.
+      map.panTo(moveLatLng);
+   }
+   
+   function panTo2()
+   {
+
+      // 중심을 이동할 위도 경도 위치 생성(준봉빌딩)
+      var moveLatLng = new kakao.maps.LatLng(37.554957596966766, 126.92265346335898);
+      
+      // 지도 중심 이동
+      //-- 이동 과정에서 이동할 거리가 지도에서 표현되는 범위 밖에 있다면
+      //   즉, 이동 거리가 지도 화면보다 크다면
+      //   부드러운 효과 없이 이동하게 된다.
+      map.panTo(moveLatLng);
+   }
+   
+   function panTo3()
+   {
+
+      // 중심을 이동할 위도 경도 위치 생성(국회의사당)
+      var moveLatLng = new kakao.maps.LatLng(37.531908818852806, 126.91414353219399);
+      
+      // 지도 중심 이동
+      //-- 이동 과정에서 이동할 거리가 지도에서 표현되는 범위 밖에 있다면
+      //   즉, 이동 거리가 지도 화면보다 크다면
+      //   부드러운 효과 없이 이동하게 된다.
+      map.panTo(moveLatLng);
+   }
+   
+   function setCenterBack()
+   {
+      // 중심을 이동할 위도 경도 위치 생성(풍성빌딩)
+      var moveLatLng = new kakao.maps.LatLng(37.556583, 126.919521);
+      
+      // 지도 중심 이동
+      map.setCenter(moveLatLng);
+   }
+   
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+<div>
+   <h1>kakao Map 중심 좌표 이동</h1>
+   <ul>
+      <li>지도 객체의메소드를 통해 지도를 원하는 좌표로 이동시킬 수 있다.</li>
+      <li>표시되고 있는 영역을 벗어나지 않는 거리 내에서
+      애니메이션 효과처럼 지도를 부드럽게 이동시킬 수도 있다.</li>
+   </ul>
+   <hr>
+</div>
+
+
+<!-- 지도를 그릴 div 공간 확보(지정)  -->
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+
+<p>
+   <button type="button" onclick="setCenter()">중심좌표 이동</button>
+   <button type="button" onclick="panTo()">중심좌표 부드럽게 이동</button>
+   <button type="button" onclick="panTo2()">중심좌표 부드럽게 이동2</button>
+   <button type="button" onclick="panTo3()">중심좌표 부드럽게 이동3</button>
+   <button type="button" onclick="setCenterBack()">원래 위치로 이동</button>   
+</p>
+</body>
+</html>

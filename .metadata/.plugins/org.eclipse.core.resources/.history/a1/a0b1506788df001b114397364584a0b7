@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest013.html</title>
+
+<!-- 발급받은 App Key -->
+<!-- appkey=cf7db3432a6cbc93b60056a3c4b498b8 -->
+<!-- 지도의 중심 좌표 -->
+<!-- 37.556461, 126.919521 -->
+
+<!-- 길 건너 스타벅스 -->
+<!-- 37.5568452499338, 126.91997080036919  -->
+
+<!-- Text 가 안나온다..ㅎ -->
+<!-- 011 부터 꼬임.. -->
+
+<script type="text/javascript" 
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf7db3432a6cbc93b60056a3c4b498b8"></script>
+
+<script type="text/javascript">
+	
+	function initialize()
+	{
+		container = document.getElementById("map");
+		options = 
+		{
+			center: new kakao.maps.LatLng(37.556461, 126.919521)
+			, level: 3
+		}
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// 지도에 표시할 마커 구성(길 건너 스타벅스 → 37.5568452499338, 126.91997080036919)
+		markerPosition = new kakao.maps.LatLng(37.5568452499338, 126.91997080036919);
+		
+		// 마커 생성
+		marker = new kakao.maps.Marker(
+		{
+			// 지도 길 건너 스타벅스 좌표에 마커 생성
+			position: markerPosition
+		});
+		
+		// 지도에 마커를 표시
+		marker.setMap(map);
+		
+	}
+	
+	// 마커 제거 함수
+	function removeMarker() 
+	{
+		// 지도 위의 마커 제거
+		marker.setMap(null);
+	}
+	
+	// 마커 다시 생성
+	function createMarker() 
+	{
+		// 마커가 지도에 표시되도록 설정
+		marker.setMap(map);
+	}
+	
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+<div>
+	<h1>Kakao Map 고정 마커 표시</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 div 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+
+<p>
+	<button type="button" onclick="removeMarker()">마커 제거</button>
+	<button type="button" onclick="createMarker()">마커 다시 생성</button>
+</p>
+<div id="result"></div>
+
+
+
+</body>
+</html>
